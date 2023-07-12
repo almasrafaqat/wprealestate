@@ -139,6 +139,9 @@ add_action( 'widgets_init', 'realestate_widgets_init' );
  */
 function realestate_scripts() {
 	wp_enqueue_style( 'realestate-style', get_stylesheet_uri(), array(), _S_VERSION );
+
+	/** Bootstrap style */
+	wp_enqueue_style( 'bootstrap-style',  get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), _S_VERSION );
 	wp_style_add_data( 'realestate-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'realestate-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
