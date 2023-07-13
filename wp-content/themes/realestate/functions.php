@@ -13,6 +13,14 @@ if ( ! defined( '_S_VERSION' ) ) {
 }
 
 /**
+ * Register Custom Navigation Walker
+ */
+function register_navwalker(){
+	require_once get_template_directory() . '/inc/bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  *
  * Note that this function is hooked into the after_setup_theme hook, which
@@ -49,7 +57,9 @@ function realestate_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'realestate' ),
+			'primary' => esc_html__( 'Primary', 'realestate' ),
+			'secondary' => esc_html__( 'secondary', 'realestate' ),
+			'sidebar' => esc_html__( 'sidebar', 'realestate' ),
 		)
 	);
 
@@ -138,13 +148,35 @@ add_action( 'widgets_init', 'realestate_widgets_init' );
  * Enqueue scripts and styles.
  */
 function realestate_scripts() {
+
+	
+	/** JQuery */
+	wp_enqueue_script( 'Slick-JS', get_template_directory_uri() . '/assets/jquery.min.js', array(),  true );
+
+
 	wp_enqueue_style( 'realestate-style', get_stylesheet_uri(), array(), _S_VERSION );
 
 	/** Bootstrap style */
-	wp_enqueue_style( 'bootstrap-style',  get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), _S_VERSION );
+	wp_enqueue_style( 'bootstrap-style',  get_template_directory_uri() . '/assets/css/bootstrap.min.css', array() );
+
+	/** Slick CSS */
+	wp_enqueue_style( 'slick',  get_template_directory_uri() . '/assets/slick/slick.css', array() );
+
+	/** Slick Theme CSS */
+	wp_enqueue_style( 'slick-theme',  get_template_directory_uri() . '/assets/slick/slick-theme.css', array() );
+
+
+
 	wp_style_add_data( 'realestate-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'realestate-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'realestate-navigation', get_template_directory_uri() . '/js/navigation.js', array(),  true );
+
+	
+	/** Bootstrap JS */
+	wp_enqueue_script( 'Bootstrap-JS', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array(),  true );
+
+	/** Slick JS */
+	wp_enqueue_script( 'Slick-JS', get_template_directory_uri() . '/assets/slick/slick.min.js', array(),  true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
