@@ -62,31 +62,19 @@
 
 						</div>
 						<div>
-							<a href="" class="top-nav-menu-item">Login/Sign Up</a>
+							<a href="" class="top-nav-menu-item">
+							<?php $user_icon = get_field( 'user_icon', 'option' ); ?>
+								<?php if ( $user_icon ) : ?>
+									<img src="<?php echo esc_url( $user_icon['url'] ); ?>" alt="<?php echo esc_attr( $user_icon['alt'] ); ?>" />
+								<?php endif; ?>
+								<?php the_field( 'login_signup_text', 'option' ); ?>
+								</a>
 
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="site-branding">
-				<?php
-				the_custom_logo();
-				if (is_front_page() && is_home()) :
-				?>
-					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-				<?php
-				else :
-				?>
-					<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
-				<?php
-				endif;
-				$realestate_description = get_bloginfo('description', 'display');
-				if ($realestate_description || is_customize_preview()) :
-				?>
-					<p class="site-description"><?php echo $realestate_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-																			?></p>
-				<?php endif; ?>
-			</div><!-- .site-branding -->
+	
 
 			<nav id="site-navigation" class="main-navigation">
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Primary Menu', 'realestate'); ?></button>
@@ -96,13 +84,23 @@
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'your-theme-slug'); ?>">
 							<span class="navbar-toggler-icon"></span>
 						</button>
-						<div>
+					
+						<a class="navbar-brand" href="#"></a>
 
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16">
-								<path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
-							</svg>
-						</div>
-						<a class="navbar-brand" href="#">ALMAS.</a>
+						<div class="site-branding">
+				<?php
+				the_custom_logo();
+				if (is_front_page() && is_home()) :
+				?>
+					<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home" class="mt-2"><?php bloginfo('name'); ?></a></h1>
+				
+				<?php
+				endif;
+				?>
+				
+				
+			</div><!-- .site-branding -->
+						
 						<?php
 						wp_nav_menu(array(
 							'theme_location'    => 'primary',
@@ -110,14 +108,17 @@
 							'container'         => 'div',
 							'container_class'   => 'collapse navbar-collapse',
 							'container_id'      => 'bs-example-navbar-collapse-1',
-							'menu_class'        => 'nav navbar-nav ml-auto',
+							'menu_class'        => 'nav navbar-nav ms-auto',
 							'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
 							'walker'            => new WP_Bootstrap_Navwalker(),
 						));
 						?>
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+						<span class="menu-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
 						</svg>
+						</span>
+						
 					</div>
 
 				</nav>

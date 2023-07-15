@@ -1,3 +1,58 @@
 .top-nav{
   padding: 20px 0;
 }
+
+.top-nav-menu-item {
+  font-size: 18px;
+  line-height: 30px;
+  color: #fff !important;
+  font-family: var(--font-family);
+  font-weight: normal;
+  font-style: normal;
+  margin: 0 0.5rem;
+  
+  
+}
+
+.site-title a {
+  font-family: var(--font-family);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 40px;
+  font-style: normal;
+  color: #2a2c30;
+
+}
+
+.nav-link {
+  font-size: 18px;
+  font-family: var(--font-family);
+  color: #333333 !important;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 30px;
+  
+}
+.nav-link:hover{
+  color: #10AC84 !important;
+}
+
+.active a {
+  color: #10AC84 !important;
+}
+
+.menu-item {
+  margin: 0 0.5rem;
+}
+
+.menu-icon{
+  padding: 0.3rem;
+  background-color: #10AC84;
+  width: 26px;
+  height: 26px;
+ 
+}
+
+.bi-list {
+  color: #fff !important;
+}
